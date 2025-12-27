@@ -8,19 +8,28 @@
     "build": "npm run compile",
     "start": "ts-node src/index.ts",
     "lint": "eslint src/**",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --testPathIgnorePatterns=manual",
+    "test:watch": "jest --watch --testPathIgnorePatterns=manual",
+    "test:unit": "jest __tests__/app.unit.test.ts",
+    "test:edge": "jest __tests__/app.edge.test.ts",
+    "test:repo": "jest __tests__/repositories.employee.test.ts",
+    "test:manual": "ts-node src/__tests__/manual/app.manual.test.ts"
   },
   "keywords": [
     "typescript"
   ],
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.3",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "eslint": "^8.38.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
     "ts-loader": "^9.4.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -57,7 +66,5 @@
         }
       ]
     }
-  },
-  "dependencies": {
   }
 }

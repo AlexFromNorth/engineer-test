@@ -1,11 +1,10 @@
-import { createDb } from "./db";
+import { IDb } from "./db";
 import { IHRApp } from "./types/IHRApp";
 import { HRService } from "./services/HRService";
 import { EmployeeRepository } from "./repositories/EmployeeRepository";
 
-export const createHRApp = (): IHRApp => {
-  const db = createDb();
-
+// обертка для тестов
+export const createHRAppWithDb = (db: IDb): IHRApp => {
   const service = new HRService(
     new EmployeeRepository(db)
   );
@@ -13,8 +12,6 @@ export const createHRApp = (): IHRApp => {
   return {
     employeeWithCityList: () => service.employeeWithCityList(),
     employeeWithPositionList: () => service.employeeWithPositionList(),
-    update: async () => {
-      // по заданию сейчас не требуется
-    },
+    update: async () => {},
   };
 };
